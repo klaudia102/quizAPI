@@ -15,7 +15,7 @@ let questions = [
         correct: 'all of the above',
     },
     {
-        title: 'String value must be enclosed within ___ when beubg assigned to variables.',
+        title: 'String value must be enclosed within ___ when being assigned to variables.',
         answers: ['commas', 'curly brackets', 'quotes', 'parentheses'],
         correct: 'quotes',
     },
