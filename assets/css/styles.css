@@ -15,6 +15,7 @@ a:hover {
 
 button {
   display: inline-block;
+  width: 20%;
   margin: 5px;
   cursor: pointer;
   font-size: 100%;
