@@ -29,7 +29,7 @@ let startTimer = function () {
         time.textContent = timerCount;
         timerCount--;
 
-        if (timerCount === 0 || index === questions.length) {
+        if (timerCount === 0 || index === questions.length ) {
             finish()
             clearInterval(timer)
         }
@@ -80,7 +80,7 @@ let finish = function () {
 
     questionEl.classList.add('hide')
     endScreenEl.classList.remove('hide')
-    finalScore.textContent = timerCount;
+    finalScore.textContent = timerCount + 1;
 }
 
 startBtn.addEventListener('click', startTimer)
@@ -101,11 +101,13 @@ const submit = function (event) {
         initials: initials,
         score: timerCount,
     }
+ 
 
     highScores.push(newScore)
 
     let highScoresForLocalStorage = JSON.stringify(highScores)
     localStorage.setItem('highscores', highScoresForLocalStorage)
 
+   
 }
-submitBtn.addEventListener('click', submit)
+submitBtn.addEventListener('submit', submit)
