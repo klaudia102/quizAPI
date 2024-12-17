@@ -29,7 +29,7 @@ let startTimer = function () {
         time.textContent = timerCount;
         timerCount--;
 
-        if (timerCount === 0 || index === questions.length ) {
+        if (timerCount === 0 || index === questions.length) {
             finish()
             clearInterval(timer)
         }
@@ -101,13 +101,11 @@ const submit = function (event) {
         initials: initials,
         score: timerCount,
     }
- 
 
     highScores.push(newScore)
 
     let highScoresForLocalStorage = JSON.stringify(highScores)
     localStorage.setItem('highscores', highScoresForLocalStorage)
 
-   
 }
 submitBtn.addEventListener('submit', submit)
