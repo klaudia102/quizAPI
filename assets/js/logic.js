@@ -99,6 +99,6 @@ const submit = function (event) {
 
     const highScoresForLocalStorage = JSON.stringify(highScores)
     localStorage.setItem('highscores', highScoresForLocalStorage)
-    
+    open('./highscores.html')
 }
 submitBtn.addEventListener('click', submit)

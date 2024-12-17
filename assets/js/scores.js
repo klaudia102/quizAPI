@@ -37,10 +37,10 @@ console.log
   }
 
 
-// //remove from local storage
+//remove from local storage
 
-// function clearStorage() {
-//     clearStorage()
-// }
+function clearStorage() {
+  localStorage.clear()
+}
 
-// clearBtn.addEventListener('click', clearStorage)
+clearBtn.addEventListener('click', clearStorage)
