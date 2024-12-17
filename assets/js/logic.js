@@ -85,27 +85,20 @@ let finish = function () {
 
 startBtn.addEventListener('click', startTimer)
 
-const highScores = [];
-
-let newScore = {
-    initials: '',
-    score: 0,
-}
-
-let initials = initialsEl.value
+let highScores = [];
 
 const submit = function (event) {
 
     event.preventDefault();
-    newScore = {
-        initials: initials,
-        score: timerCount,
+    let newScore = {
+        initials: initialsEl.value,
+        score: timerCount + 1,
     }
 
     highScores.push(newScore)
 
-    let highScoresForLocalStorage = JSON.stringify(highScores)
+    const highScoresForLocalStorage = JSON.stringify(highScores)
     localStorage.setItem('highscores', highScoresForLocalStorage)
-
+    
 }
-submitBtn.addEventListener('submit', submit)
+submitBtn.addEventListener('click', submit)
