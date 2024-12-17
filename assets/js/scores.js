@@ -4,43 +4,45 @@ let scoreList = document.querySelector('#highscores');
 
 var highScoresFromLocalStorage = JSON.parse(localStorage.getItem('highscores'))
 
-console.log(highScoresFromLocalStorage)
-
 init()
 
 // sort the scorts from hightes to lowest
 // display
-function renderScoresList() {
-    for (var i = 0; i < highScoresFromLocalStorage.length; i++) {
-        var entry = highScoresFromLocalStorage[i];
-    
-        var li = document.createElement("li");
 
-        li.textContent = entry;
-        li.setAttribute("data-index", highScoresFromLocalStorage[i].score);
-    
-        scoreList.appendChild(li);
-      }
-      console.log('nks')
+function renderScoresList() {
+    scoreList.textContent = '';
+
+    for (var i = 0; i < highScoresFromLocalStorage.length; i++) {
+
+        let orderedScores = highScoresFromLocalStorage.sort(function (a, b) { return a.score - b.score });
+
+        const singleEntry = orderedScores[i]
+        const singleInitials = singleEntry.initials;
+        const singleScore = singleEntry.score;
+
+        const el = document.createElement("li");
+
+        el.textContent = singleInitials + " got " + singleScore + ' points'
+        el.setAttribute("data-index", highScoresFromLocalStorage[i].score);
+
+        scoreList.appendChild(el);
+    }
 }
 
-
 function init() {
-    
-    
-  
+
     if (highScoresFromLocalStorage !== null) {
-      highScores = highScoresFromLocalStorage;
+        highScores = highScoresFromLocalStorage;
     }
-console.log
+
     renderScoresList();
-  }
+}
 
-
-//remove from local storage
+// //remove from local storage
 
 function clearStorage() {
-  localStorage.clear()
+    localStorage.clear(highscores)
+    location.reload();
 }
 
 clearBtn.addEventListener('click', clearStorage)

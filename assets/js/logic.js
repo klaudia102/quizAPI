@@ -94,11 +94,13 @@ const submit = function (event) {
         initials: initialsEl.value,
         score: timerCount + 1,
     }
+    if (initialsEl.value === "") {
+        return;
+    }
 
     highScores.push(newScore)
+    initialsEl.value = '';
 
-    const highScoresForLocalStorage = JSON.stringify(highScores)
-    localStorage.setItem('highscores', highScoresForLocalStorage)
-    open('./highscores.html')
+    localStorage.setItem('highscores', JSON.stringify(highScores))
 }
 submitBtn.addEventListener('click', submit)
