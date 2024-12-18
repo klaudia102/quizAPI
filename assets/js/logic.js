@@ -88,9 +88,10 @@ startBtn.addEventListener('click', startTimer)
 let highScores = [];
 
 const submit = function (event) {
+console.log('brawo')
+    // event.preventDefault();
 
-    event.preventDefault();
-    let newScore = {
+    const newScore = {
         initials: initialsEl.value,
         score: timerCount + 1,
     }
@@ -101,6 +102,7 @@ const submit = function (event) {
     highScores.push(newScore)
     initialsEl.value = '';
 
+    console.log(highScores)
     localStorage.setItem('highscores', JSON.stringify(highScores))
 }
 submitBtn.addEventListener('click', submit)
