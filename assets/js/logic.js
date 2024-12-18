@@ -81,15 +81,15 @@ let finish = function () {
     questionEl.classList.add('hide')
     endScreenEl.classList.remove('hide')
     finalScore.textContent = timerCount + 1;
+    goToScores()
 }
 
 startBtn.addEventListener('click', startTimer)
 
-let highScores = [];
+const highScores = [];
 
-const submit = function (event) {
-console.log('brawo')
-    // event.preventDefault();
+
+const submit = function () {
 
     const newScore = {
         initials: initialsEl.value,
@@ -100,9 +100,25 @@ console.log('brawo')
     }
 
     highScores.push(newScore)
-    initialsEl.value = '';
 
-    console.log(highScores)
-    localStorage.setItem('highscores', JSON.stringify(highScores))
+    storeScores();
+  
 }
-submitBtn.addEventListener('click', submit)
+
+submitBtn.addEventListener('click', function(event){
+    event.preventDefault()
+    submit()
+    
+})
+
+
+function storeScores() {
+    localStorage.setItem('highscores', JSON.stringify(highScores))
+} 
+
+function goToScores() {
+    const link = document.createElement('a')
+link.setAttribute('href', 'https://www.google.com/search?client=firefox-b-d&q=how+to+create+a+path+to+a+file')
+    submitBtn.appendChild(link)
+console.log(link)
+}
