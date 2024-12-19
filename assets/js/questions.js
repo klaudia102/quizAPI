@@ -1,8 +1,8 @@
 let questions = [
     {
-        title: 'Commonly used data type do not include:',
-        answers: ['strings', 'boolean', 'alerts', 'numbers'],
-        correct: 'alerts'
+        title: 'What does NaN stand for in JavaScript?',
+        answers: ['Not a Number', 'Null and None', 'Not a Name', 'Non-accessible Node'],
+        correct: 'Not a Number',
     },
     {
         title: 'The condition in an if/else statement is enclose within ____.',
@@ -10,18 +10,18 @@ let questions = [
         correct: 'parentheses',
     },
     {
-        title: 'Arrays in Java Script can be used to store ____.',
-        answers: ['numbers and strings', 'other arrays', 'boolean', 'all of the above'],
-        correct: 'all of the above',
+        title: 'Which method is used to add elements to the end of an array in JavaScript?',
+        answers: ['pop()', 'push()', 'unshift()', 'shift()'],
+        correct: 'push()',
     },
     {
-        title: 'String value must be enclosed within ___ when being assigned to variables.',
-        answers: ['commas', 'curly brackets', 'quotes', 'parentheses'],
-        correct: 'quotes',
+        title: 'Which function is used to parse a string into a floating-point number?',
+        answers: ['parseInt()', 'Number()', 'toFloat()', 'parseFloat()'],
+        correct: 'parseFloat()',
     },
     {
-        title: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-        answers: ['JavaScript', 'terminal/bash', 'for loop', 'console.log'],
-        correct: 'console.log'
+        title: 'What is the correct syntax for creating a function in JavaScript?',
+        answers: ['function myFunction { }', 'function myFunction() { }', 'myFunction() { function }', 'function: myFunction() { }'],
+        correct: 'unction myFunction() { }'
     }
 ]

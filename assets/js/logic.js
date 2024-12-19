@@ -17,21 +17,22 @@ let correctAudio = new Audio('assets/sfx/correct.wav')
 let incorrectAudio = new Audio('assets/sfx/incorrect.wav')
 
 // // // timer starts countdown when clicked:
+let timer
 
 let startTimer = function () {
 
     questionEl.classList.remove('hide')
     startScreenEl.classList.add('hide')
-
     displayQ()
-    let timer = setInterval(function () {
+
+    timer = setInterval(function () {
 
         time.textContent = timerCount;
         timerCount--;
 
-        if (timerCount === 0 || index === questions.length) {
-            finish()
+        if (timerCount <= 0 || index === questions.length) {
             clearInterval(timer)
+            finish()
         }
 
     }, 1000)
@@ -50,8 +51,8 @@ let displayQ = function () {
         p.appendChild(button)
         choices.appendChild(p)
     }
-
     questionEl.addEventListener('click', nextQ)
+
 }
 
 let nextQ = function (event) {
@@ -74,31 +75,54 @@ let nextQ = function (event) {
     if (index < questions.length) {
         setTimeout(displayQ, 500)
     }
+
+    else {
+        finish()
+    }
 }
 
 let finish = function () {
-
+    clearInterval(timer)
     questionEl.classList.add('hide')
     endScreenEl.classList.remove('hide')
     finalScore.textContent = timerCount + 1;
+
 }
 
 startBtn.addEventListener('click', startTimer)
 
-let highScores = [];
+const highScores = [];
 
-const submit = function (event) {
 
-    event.preventDefault();
-    let newScore = {
-        initials: initialsEl.value,
-        score: timerCount + 1,
+const submit = function () {
+
+    const initials = initialsEl.value.trim();
+    if (initials === "") {
+        message.textContent = "Please enter your initials.";
+        return;
     }
 
-    highScores.push(newScore)
+    let highScores = JSON.parse(localStorage.getItem('highscores')) || [];
 
-    const highScoresForLocalStorage = JSON.stringify(highScores)
-    localStorage.setItem('highscores', highScoresForLocalStorage)
-    open('./highscores.html')
-}
-submitBtn.addEventListener('click', submit)
+    const newScore = {
+        initials: initials.toUpperCase(),
+        score: timerCount + 1, // Final score
+    };
+
+    highScores.push(newScore);
+
+    localStorage.setItem('highscores', JSON.stringify(highScores));
+
+    window.location.href = 'highscores.html';
+};
+
+submitBtn.addEventListener('click', function (event) {
+    event.preventDefault()
+    submit()
+
+})
+
+
+function storeScores() {
+    localStorage.setItem('highscores', JSON.stringify(highScores))
+} 
